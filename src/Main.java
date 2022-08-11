@@ -4,10 +4,10 @@ import java.util.Locale;
 public class Main {
     public static void main(String[] args) {
        // task 1
-       printYear(2022);
+       printLeapYear(2022);
        System.out.println();
        // task 2
-       int clientOS = 0;
+       int clientOS = 1;
        int deviceYear = 2022;
        printInstallSystem(clientOS, deviceYear);
        System.out.println();
@@ -17,17 +17,17 @@ public class Main {
         System.out.println("потребуется дней " + deliveryDays);
 
     }
-    private static void printYear (int year) {
+    private static void printLeapYear (int year) {
         String output;
-        if (isYear(year)){
+        if (isLeapYear(year)){
             output=year + " является высокосным";
         } else {
             output=year + " не является высокосным";
         }
         System.out.println(output);
     }
-    private static boolean isYear (int year) {
-        return year % 4 == 0 && year % 100 != 100 || year % 400 == 0;
+    private static boolean isLeapYear (int year) {
+        return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
     }
     private static void printInstallSystem(int clientOS, int deviceYear) {
         int currentYear = LocalDate.now().getYear();
@@ -35,7 +35,7 @@ public class Main {
         if (currentYear > deviceYear){
             output="установите облегченную версию для ";
         } else {
-            output="установите облегченную версию для ";
+            output="установите версию для ";
         }
         if (clientOS == 1){
             output += "приложение Android по ссылке";
